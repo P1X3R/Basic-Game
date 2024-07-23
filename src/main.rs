@@ -32,6 +32,19 @@ fn main() {
         if d.is_key_down(KeyboardKey::KEY_D) {
             player.x += speed;
         }
+
+        // Player edge collision
+        if player.y < 0.0 {
+            player.y = 0.0;
+        } else if player.y > d.get_screen_height().as_f32() - player.height {
+            player.y = d.get_screen_height().as_f32() - player.height;
+        }
+
+        if player.x < 0.0 {
+            player.x = 0.0;
+        } else if player.x > d.get_screen_width().as_f32() - player.width {
+            player.x = d.get_screen_width().as_f32() - player.width;
+        }
         // -----------------------------------------------------------------
 
         // Draw elements

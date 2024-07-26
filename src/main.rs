@@ -10,11 +10,11 @@ fn main() {
     let (mut rl, thread) = raylib::init().size(640, 480).title("Basic Game").build();
 
     let mut player: Player = Player::new(
-        rl.get_screen_width() / 2, // x
-        rl.get_screen_height() / 2, // y
-        3,
-        1.0, // speed
-        rl.load_texture(&thread, "img/player.png")
+        rl.get_screen_width() / 2, // X
+        rl.get_screen_height() / 2, // Y
+        3, // Size
+        1, // Speed
+        rl.load_texture(&thread, "img/player.png") // Sprite
             .expect("Error loading the texture"),
     );
     // ------------------------------------------------------------------------------------

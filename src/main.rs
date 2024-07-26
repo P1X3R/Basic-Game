@@ -9,13 +9,14 @@ fn main() {
     // ------------------------------------------------------------------------------------
     let (mut rl, thread) = raylib::init().size(640, 480).title("Basic Game").build();
 
-    let mut player: Player = Player {
-        x: rl.get_screen_width().as_f32() / 2.0,
-        y: rl.get_screen_height().as_f32() / 2.0,
-        width: 30.0,
-        height: 30.0,
-        speed: 1.0,
-    };
+    let mut player: Player = Player::new(
+        rl.get_screen_width() / 2, // x
+        rl.get_screen_height() / 2, // y
+        3,
+        1.0, // speed
+        rl.load_texture(&thread, "img/player.png")
+            .expect("Error loading the texture"),
+    );
     // ------------------------------------------------------------------------------------
 
     // ------------------------------------------------------------------------------------
@@ -34,13 +35,12 @@ fn main() {
         // ------------------------------------------------------------------------------------
         // Draw elements
         // ------------------------------------------------------------------------------------
-        d.clear_background(Color::WHITE);
-        d.draw_rectangle(
+        d.clear_background(Color::BLACK);
+        d.draw_texture(
+            &player.sprite,
             player.x as i32,
             player.y as i32,
-            player.width as i32,
-            player.height as i32,
-            Color::BLACK,
+            Color::WHITE,
         );
         // ------------------------------------------------------------------------------------
     }

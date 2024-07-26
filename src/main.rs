@@ -38,8 +38,8 @@ fn main() {
         d.clear_background(Color::BLACK);
         d.draw_texture(
             &player.sprite,
-            player.x as i32,
-            player.y as i32,
+            player.x,
+            player.y,
             Color::WHITE,
         );
         // ------------------------------------------------------------------------------------

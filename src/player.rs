@@ -1,16 +1,16 @@
 use raylib::prelude::*;
 
 pub struct Player {
-    pub x: i32,
-    pub y: i32,
-    pub width: f32,
-    pub height: f32,
-    pub speed: i32,
+    pub x: f32,
+    pub y: f32,
+    pub width: i32,
+    pub height: i32,
+    pub speed: f32,
     pub sprite: Texture2D,
 }
 
 impl Player {
-    pub fn new(x: i32, y: i32, size: i32, speed: i32, sprite: Texture2D) -> Self {
+    pub fn new(x: f32, y: f32, size: i32, speed: f32, sprite: Texture2D) -> Self {
         let mut sprite = sprite;
         sprite.width = size * sprite.width;
         sprite.height = size * sprite.height;
@@ -18,8 +18,8 @@ impl Player {
         Player {
             x,
             y,
-            width: sprite.width().as_f32(),
-            height: sprite.height().as_f32(),
+            width: sprite.width(),
+            height: sprite.height(),
             speed,
             sprite,
         }
@@ -41,16 +41,16 @@ impl Player {
     }
 
     pub fn edge_collision(&mut self, d: &RaylibDrawHandle) {
-        if self.y < 0 {
-            self.y = 0;
-        } else if self.y > d.get_screen_height() as i32 - self.height as i32 {
-            self.y = d.get_screen_height() as i32 - self.height as i32;
+        if self.y < 0.0 {
+            self.y = 0.0;
+        } else if self.y > d.get_screen_height() as f32 - self.height as f32 {
+            self.y = d.get_screen_height() as f32 - self.height as f32;
         }
 
-        if self.x < 0 {
-            self.x = 0;
-        } else if self.x > d.get_screen_width() as i32 - self.width as i32 {
-            self.x = d.get_screen_width() as i32 - self.width as i32;
+        if self.x < 0.0 {
+            self.x = 0.0;
+        } else if self.x > d.get_screen_width() as f32 - self.width as f32 {
+            self.x = d.get_screen_width() as f32 - self.width as f32;
         }
     }
 }

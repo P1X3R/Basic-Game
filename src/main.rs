@@ -1,3 +1,4 @@
+mod meteorite;
 mod player;
 
 use player::Player;
@@ -10,10 +11,10 @@ fn main() {
     let (mut rl, thread) = raylib::init().size(640, 480).title("Basic Game").build();
 
     let mut player: Player = Player::new(
-        rl.get_screen_width() / 2, // X
-        rl.get_screen_height() / 2, // Y
-        3, // Size
-        1, // Speed
+        rl.get_screen_width().as_f32() / 2.0,  // X
+        rl.get_screen_height().as_f32() / 2.0, // Y
+        3,                                     // Size
+        1.0,                                     // Speed
         rl.load_texture(&thread, "img/player.png") // Sprite
             .expect("Error loading the texture"),
     );
@@ -38,8 +39,8 @@ fn main() {
         d.clear_background(Color::BLACK);
         d.draw_texture(
             &player.sprite,
-            player.x,
-            player.y,
+            player.x as i32,
+            player.y as i32,
             Color::WHITE,
         );
         // ------------------------------------------------------------------------------------

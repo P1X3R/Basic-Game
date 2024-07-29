@@ -14,7 +14,7 @@ fn main() {
         rl.get_screen_width().as_f32() / 2.0,  // X
         rl.get_screen_height().as_f32() / 2.0, // Y
         3,                                     // Size
-        1.0,                                     // Speed
+        1.0,                                   // Speed
         rl.load_texture(&thread, "img/player.png") // Sprite
             .expect("Error loading the texture"),
     );

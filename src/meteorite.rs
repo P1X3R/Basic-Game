@@ -11,7 +11,14 @@ pub struct Meteorite {
 }
 
 impl Meteorite {
-    pub fn new(x: f32, y: f32, size: i32, speed: f32, sprite: Texture2D, direction: Vector2) -> Self {
+    pub fn new(
+        x: f32,
+        y: f32,
+        size: i32,
+        speed: f32,
+        sprite: Texture2D,
+        direction: Vector2,
+    ) -> Self {
         let mut sprite = sprite;
         sprite.width = size + sprite.width;
         sprite.height = size + sprite.height;

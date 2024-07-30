@@ -53,4 +53,13 @@ impl Player {
             self.x = d.get_screen_width() as f32 - self.width as f32;
         }
     }
+
+    pub fn as_rec(&self) -> Rectangle {
+        Rectangle {
+            x: self.x,
+            y: self.y,
+            width: self.width as f32,
+            height: self.height as f32,
+        }
+    }
 }

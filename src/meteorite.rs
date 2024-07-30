@@ -30,12 +30,25 @@ impl Meteorite {
             height: sprite.height,
             speed,
             sprite,
-            direction,
+            direction: Vector2 {
+                x: x - direction.x,
+                y: y - direction.y,
+            }
+            .normalized(),
         }
     }
 
     pub fn movement(&mut self) {
         self.x -= self.direction.x * self.speed;
         self.y -= self.direction.y * self.speed;
+    }
+
+    pub fn as_rec(&self) -> Rectangle {
+        Rectangle {
+            x: self.x,
+            y: self.y,
+            width: self.width as f32,
+            height: self.height as f32,
+        }
     }
 }
